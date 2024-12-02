@@ -20,7 +20,7 @@ require 'active_support/core_ext/string/inflections'
 require 'singleton'
 require 'base64'
 
-require 'elasticsearch'
+require 'opensearch'
 
 def try_require(path)
   require path
@@ -49,7 +49,7 @@ require 'chewy/fields/base'
 require 'chewy/fields/root'
 require 'chewy/journal'
 require 'chewy/railtie' if defined?(Rails::Railtie)
-require 'chewy/elastic_client'
+require 'chewy/open_search_client'
 
 ActiveSupport.on_load(:active_record) do
   include Chewy::Index::Observe::ActiveRecordMethods
@@ -98,7 +98,7 @@ module Chewy
     # Main elasticsearch-ruby client instance
     #
     def client
-      Chewy.current[:chewy_client] ||= Chewy::ElasticClient.new
+      Chewy.current[:chewy_client] ||= Chewy::OpenSearchClient.new
     end
 
     # Sends wait_for_status request to ElasticSearch with status

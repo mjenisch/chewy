@@ -1,5 +1,4 @@
 gem 'database_cleaner'
-gem 'elasticsearch-extensions'
 gem 'method_source'
 gem 'rake'
 gem 'redis', require: false
